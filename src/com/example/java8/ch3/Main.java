@@ -207,4 +207,14 @@ public class Main {
         }
         return result;
     }
+
+    public static void letterPipeline() {
+
+        Function<String, String> addHeader = Letter::addHeader;
+        Function<String, String> transformationPipline =
+                addHeader.andThen(Letter::checkSpelling)
+                .andThen(Letter.addFooter);
+
+
+    }
 }
