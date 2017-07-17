@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 
@@ -66,6 +67,9 @@ public class Main {
 
         forEach(Arrays.asList(1,2,3,4,5), (t) -> System.out.println(t));
 
+        // Working with a Function
+        List<Integer> list = map(Arrays.asList("lambda" ,"in", "action"), (s) -> s.length() );
+
     }
 
 
@@ -108,5 +112,13 @@ public class Main {
         for(T t : list) {
             consumer.accept(t);
         }
+    }
+
+    public static <T, R> List<R> map(List<T> list, Function<T, R> f) {
+        List<R> result = new ArrayList<>();
+        for(T t : list) {
+            result.add(f.apply(t));
+        }
+        return result;
     }
 }
