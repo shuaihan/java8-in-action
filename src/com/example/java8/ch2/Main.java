@@ -10,7 +10,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-	    List<Apple> inventory = Arrays.asList(new Apple("green"), new Apple("yellow"), new Apple("red"));
+	    List<Apple> inventory = Arrays.asList(new Apple("green", 180), new Apple("yellow", 20), new Apple("red", 70));
 
 	    List<Apple> result = filterGreenApples(inventory);
 	    System.out.println(result);
@@ -20,7 +20,11 @@ public class Main {
 	    System.out.println(redApples);
         System.out.println(greenApples);
 
-        
+        greenApples = filterApples(inventory, "green", 0, true);
+        List<Apple> heavyApples = filterApples(inventory, "", 150, false);
+        System.out.println(greenApples);
+        System.out.println(heavyApples);
+
     }
 
 
@@ -41,6 +45,20 @@ public class Main {
         List<Apple> result = new ArrayList<>();
         for(Apple apple : inventory) {
             if(color.equals(apple.getColor())) {
+                result.add(apple);
+            }
+        }
+        return result;
+    }
+
+    //  Third attempt: filtering with every attribute you can think of
+    public static List<Apple> filterApples(List<Apple> inventory,
+                                           String color,
+                                           int weight, boolean flag) {
+        List<Apple> result = new ArrayList<>();
+        for(Apple apple : inventory) {
+            if( (flag && color.equals(apple.getColor()) ||
+                (!flag && apple.getWeight() > weight))) {
                 result.add(apple);
             }
         }

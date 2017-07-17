@@ -6,9 +6,12 @@ package com.exmpale.java8.model;
 public class Apple {
 
     private String color;
+    private int weight ;
 
-    public Apple(String color) {
+    public Apple(String color, int weight) {
+
         this.color = color;
+        this.weight = weight;
     }
 
     public String getColor() {
@@ -19,10 +22,20 @@ public class Apple {
         this.color = color;
     }
 
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
     @Override
     public String toString() {
         return "Apple{" +
                 "color='" + color + '\'' +
+                ", weight=" + weight +
                 '}';
     }
 }
