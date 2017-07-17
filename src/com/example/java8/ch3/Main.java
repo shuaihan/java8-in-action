@@ -3,11 +3,14 @@ package com.example.java8.ch3;
 import com.exmpale.java8.model.Apple;
 import com.exmpale.java8.model.Fruit;
 import com.exmpale.java8.model.Orange;
+import com.exmpale.java8.model.Color;
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+import java.util.List;
 import java.util.function.*;
 
 
@@ -111,6 +114,8 @@ public class Main {
 
         BiFunction<String, Integer, Apple> biFunction = Apple::new;
         Apple a4 = biFunction.apply("green", 110);
+
+        TriFunction<Integer, Integer, Integer, Color> colorFactory = Color::new;
     }
 
 
