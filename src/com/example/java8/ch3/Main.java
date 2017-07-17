@@ -129,6 +129,9 @@ public class Main {
                 return o1.getWeight().compareTo(o2.getWeight());
             }
         });
+
+        // 3.7.3. Step 3: Use lambda expressions
+        inventory.sort((Apple o1, Apple o2) -> o1.getWeight().compareTo(o2.getWeight()));
         
     }
 
