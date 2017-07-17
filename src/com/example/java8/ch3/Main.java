@@ -213,7 +213,7 @@ public class Main {
         Function<String, String> addHeader = Letter::addHeader;
         Function<String, String> transformationPipline =
                 addHeader.andThen(Letter::checkSpelling)
-                .andThen(Letter.addFooter);
+                .andThen(Letter::addFooter);
 
 
     }
