@@ -136,7 +136,8 @@ public class Main {
 
         Comparator<Apple> comparator = Comparator.comparing((Apple a) -> a.getWeight()) ;
         inventory.sort(Comparator.comparing((a) -> a.getWeight()));
-        inventory.sort(Comparator.comparing(Apple::getWeight));
+        inventory.sort(Comparator.comparing(Apple::getWeight).reversed());
+
     }
 
 
