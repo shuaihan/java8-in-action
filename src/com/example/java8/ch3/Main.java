@@ -138,6 +138,24 @@ public class Main {
         inventory.sort(Comparator.comparing((a) -> a.getWeight()));
         inventory.sort(Comparator.comparing(Apple::getWeight).reversed());
 
+
+        Predicate<Apple> redApple = (a) -> "red".equals(a.getColor());
+        Predicate<Apple> notRedApple = redApple.negate();
+
+        Predicate<Apple> redAndHeavyAppleorGreen =
+                redApple.and(apple -> a1.getWeight() > 150)
+                .or(apple -> "green".equals(apple.getColor()));
+
+        Function<Integer, Integer> f = x -> x + 1;
+        Function<Integer, Integer> g = x -> x * 2;
+        Function<Integer, Integer> h = f.andThen(g);
+        int ret = h.apply(1);
+
+        Function<Integer, Integer> f1 = x -> x + 1;
+        Function<Integer, Integer> g2 = x -> x * 2;
+        Function<Integer, Integer> h2 =  f1.compose(g2);
+
+        ret = h2.apply(1);
     }
 
 
