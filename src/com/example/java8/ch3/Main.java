@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 
@@ -63,6 +64,8 @@ public class Main {
         List<String> result = fileter(stringList, noneEmptyString);
         System.out.println(result);
 
+        forEach(Arrays.asList(1,2,3,4,5), (t) -> System.out.println(t));
+
     }
 
 
@@ -99,5 +102,11 @@ public class Main {
             }
         }
         return result;
+    }
+
+    public static <T> void forEach(List<T> list, Consumer<T> consumer) {
+        for(T t : list) {
+            consumer.accept(t);
+        }
     }
 }
