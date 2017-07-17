@@ -83,6 +83,9 @@ public class Main {
                 (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());
         BiFunction<Apple, Apple, Integer> c3 =
                 (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());
+
+        Function<String, Integer> stringToInteger = Integer::parseInt;
+        BiPredicate<List<String>, String> contains = List::contains;
     }
 
 
