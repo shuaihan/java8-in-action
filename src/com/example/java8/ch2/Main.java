@@ -14,6 +14,13 @@ public class Main {
 
 	    List<Apple> result = filterGreenApples(inventory);
 	    System.out.println(result);
+
+	    List<Apple> redApples = filterAppleByColor(inventory, "red");
+        List<Apple> greenApples = filterAppleByColor(inventory, "green");
+	    System.out.println(redApples);
+        System.out.println(greenApples);
+
+        
     }
 
 
@@ -26,6 +33,17 @@ public class Main {
             }
         }
 
+        return result;
+    }
+
+    // Second attempt: parameterizing the color
+    public static List<Apple> filterAppleByColor(List<Apple> inventory, String color) {
+        List<Apple> result = new ArrayList<>();
+        for(Apple apple : inventory) {
+            if(color.equals(apple.getColor())) {
+                result.add(apple);
+            }
+        }
         return result;
     }
 }
