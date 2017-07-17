@@ -29,6 +29,28 @@ public class Main {
         List<Apple> redAndHeavyApples = filterApples(inventory, new AppleRedAndHeavyPredicate());
         System.out.println(heavyApples);
         prettyPrintApple(inventory, new AppleFancyFormatter());
+
+        // you’re forced to declare several classes that implement the ApplePredicate interface and then instantiate several ApplePredicate objects that you allocate only once
+        // This is unnecessary overhead; can you do better? Java has a mechanism called anonymous classes,
+
+        // Fifth attempt: using an anonymous class
+       redApples = filterApples(inventory, new ApplePredicate() {
+            @Override
+            public boolean test(Apple apple) {
+                return "red".equals(apple.getColor());
+            }
+        }) ;
+
+        prettyPrintApple(redApples, new AppleFormatter() {
+
+            @Override
+            public String accept(Apple apple) {
+                String characteristic =  apple.getWeight() > 150 ? "heavy" : "light";
+                return "A "  + characteristic +
+                        " " + apple.getColor() + " apple";
+            }
+        }) ;
+
     }
 
 
