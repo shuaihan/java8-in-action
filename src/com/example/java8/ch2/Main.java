@@ -6,6 +6,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Main {
 
@@ -60,6 +61,8 @@ public class Main {
             return "A "  + characteristic +
                     " " + apple.getColor() + " apple";
         }) ;
+
+        redApples = filter(inventory, (Apple apple) -> "red".equals(apple.getColor()));
     }
 
 
@@ -125,5 +128,17 @@ public class Main {
             System.out.println(output);
         }
     }
+
+    // Seventh attempt: abstracting over List type
+    public static <T> List<T> filter(List<T> list, Predicate<T> predicat) {
+        List<T> result = new ArrayList<>();
+        for(T t : list) {
+            if(predicat.test(t)) {
+                result.add(t);
+            }
+        }
+        return result;
+    }
 }
+
 
