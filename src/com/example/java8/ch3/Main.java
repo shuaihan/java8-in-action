@@ -1,7 +1,6 @@
 package com.example.java8.ch3;
 
 import com.exmpale.java8.model.Apple;
-import sun.tools.jconsole.Tab;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,10 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.IntPredicate;
-import java.util.function.Predicate;
+import java.util.function.*;
 
 
 public class Main {
@@ -80,7 +76,13 @@ public class Main {
         Predicate<Integer> oddNumbers = (Integer i) -> i%2 == 1;
         oddNumbers.test(1000) ; // boxing
 
-
+        //  Same lambda, different functional interfaces
+        Comparator<Apple> c1 =
+                (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());
+        ToIntBiFunction<Apple, Apple> c2 =
+                (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());
+        BiFunction<Apple, Apple, Integer> c3 =
+                (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());
     }
 
 
