@@ -12,6 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 
 
@@ -69,6 +70,16 @@ public class Main {
 
         // Working with a Function
         List<Integer> list = map(Arrays.asList("lambda" ,"in", "action"), (s) -> s.length() );
+
+        // We described three functional interfaces that are generic: Predicate<T>, Consumer<T>, and Function<T, R>.
+        // There are also functional interfaces that are specialized with certain types.
+
+        IntPredicate evenNumber = (int i ) -> i%2 == 0;
+        evenNumber.test(1000) ;  // no boxing
+
+        Predicate<Integer> oddNumbers = (Integer i) -> i%2 == 1;
+        oddNumbers.test(1000) ; // boxing
+
 
     }
 
