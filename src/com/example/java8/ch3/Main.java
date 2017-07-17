@@ -2,6 +2,9 @@ package com.example.java8.ch3;
 
 import com.exmpale.java8.model.Apple;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Comparator;
 
 
@@ -36,10 +39,37 @@ public class Main {
         process(r1);
         process(r2);
         process(() -> System.out.println("Hello World 3"));
+
+        try {
+            String line = processFile();
+            System.out.println(line);
+        } catch(IOException ex) {
+
+        }
+
     }
 
 
     public static void process(Runnable r) {
         r.run();
+    }
+
+    // ini / preparation code -> task A or B -> Clean up / finishing code
+
+    public static String processFile() throws IOException {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("README.md"))) {
+            // this is the line that does usefull work.
+            return bufferedReader.readLine();
+        }
+    }
+
+    // Step 1: Remember behavior parameterization
+    // ex) String result = processFile((BufferedReader br) -> br.readLine() + br.readLine());
+    //  Step 2: Use a functional interface to pass behaviors
+    public static String processFile(BufferedReaderProcessor p) throws IOException {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("README.md"))) {
+            // this is the line that does usefull work.
+            return p.process(bufferedReader);
+        }
     }
 }

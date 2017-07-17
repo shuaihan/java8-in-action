@@ -17,3 +17,6 @@
 |BiPredicate<L, R> |(L, R) -> boolean | | 
 |BiConsumer<T, U> |(T, U) -> void |ObjIntConsumer<T>, ObjLongConsumer<T>, ObjDoubleConsumer<T> |
 |BiFunction<T, U, R> |(T, U) -> R |ToIntBiFunction<T, U>, ToLongBiFunction<T, U>, ToDoubleBiFunction<T, U> |
+
+# @FunctionalInterface
+The compiler will return a meaningful error if you define an interface using the @FunctionalInterface annotation and it isn’t a functional interface. 
