@@ -122,6 +122,13 @@ public class Main {
 
 
         inventory.sort(new AppleComparator());
+         //  Step 2: Use an anonymous class
+        inventory.sort(new Comparator<Apple>() {
+            @Override
+            public int compare(Apple o1, Apple o2) {
+                return o1.getWeight().compareTo(o2.getWeight());
+            }
+        });
         
     }
 
