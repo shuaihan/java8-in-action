@@ -1,11 +1,16 @@
 package com.example.java8.ch3;
 
 import com.exmpale.java8.model.Apple;
+import sun.tools.jconsole.Tab;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
+import java.util.function.Predicate;
 
 
 public class Main {
@@ -52,7 +57,11 @@ public class Main {
 
         }
 
-
+        // Predicate
+        List<String> stringList = Arrays.asList("a", "b" , "", "c", "");
+        Predicate<String> noneEmptyString = (s) -> !s.isEmpty();
+        List<String> result = fileter(stringList, noneEmptyString);
+        System.out.println(result);
 
     }
 
@@ -79,5 +88,16 @@ public class Main {
             // Step 3: Execute a behavior!
             return p.process(bufferedReader);
         }
+    }
+
+
+    public static <T> List<T> fileter(List<T> list,  Predicate<T> predicate) {
+        List<T> result = new ArrayList<>();
+        for(T t : list) {
+            if(predicate.test(t)) {
+                result.add(t);
+            }
+        }
+        return result;
     }
 }
