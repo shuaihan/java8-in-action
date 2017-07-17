@@ -51,6 +51,15 @@ public class Main {
             }
         }) ;
 
+        // Ideally we’d like to encourage programmers to use the behavior parameterization pattern,
+        // lambda expressions, a more concise way to pass code
+        // 2.3.3. Sixth attempt: using a lambda expression
+        result = filterApples(inventory, (a) -> "red".equals(a.getColor()));
+        prettyPrintApple(result, (apple) -> {
+            String characteristic =  apple.getWeight() > 150 ? "heavy" : "light";
+            return "A "  + characteristic +
+                    " " + apple.getColor() + " apple";
+        }) ;
     }
 
 
