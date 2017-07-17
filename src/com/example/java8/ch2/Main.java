@@ -28,6 +28,7 @@ public class Main {
         // Different strategies for selecting an Apple
         List<Apple> redAndHeavyApples = filterApples(inventory, new AppleRedAndHeavyPredicate());
         System.out.println(heavyApples);
+        prettyPrintApple(inventory, new AppleFancyFormatter());
     }
 
 
@@ -84,5 +85,14 @@ public class Main {
         }
         return result;
     }
-    
+
+    // 2.3. Parameterizing the behavior of filterApples and passing different filter strategies
+    public static void prettyPrintApple(List<Apple> inventory,
+                                        AppleFormatter formatter) {
+        for(Apple apple : inventory) {
+            String output = formatter.accept(apple);
+            System.out.println(output);
+        }
+    }
 }
+
