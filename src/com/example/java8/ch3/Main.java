@@ -116,6 +116,13 @@ public class Main {
         Apple a4 = biFunction.apply("green", 110);
 
         TriFunction<Integer, Integer, Integer, Color> colorFactory = Color::new;
+
+        List<Apple> inventory = Arrays.asList( new Apple("green", 180),
+                new Apple("red", 50))   ;
+
+
+        inventory.sort(new AppleComparator());
+        
     }
 
 
