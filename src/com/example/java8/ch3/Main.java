@@ -1,18 +1,28 @@
 package com.example.java8.ch3;
 
 import com.exmpale.java8.model.Apple;
+import com.exmpale.java8.model.Fruit;
+import com.exmpale.java8.model.Orange;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.function.*;
 
 
 public class Main {
+
+    static Map<String, Function<Integer, Fruit>> map = new HashMap<>();
+    static {
+        map.put("apple", Apple::new);
+        map.put("orange", Orange::new) ;
+    }
+
+    // factory pattern.
+    public static Fruit giveMeFruite(String fruit, Integer weight) {
+        return map.get(fruit).apply(weight);
+    }
 
     public static void main(String[] args)  throws IOException{
         // write your code here
@@ -86,6 +96,21 @@ public class Main {
 
         Function<String, Integer> stringToInteger = Integer::parseInt;
         BiPredicate<List<String>, String> contains = List::contains;
+
+        // Constructor references
+
+        Supplier<Apple> appleSupplier = Apple::new;
+        Apple a1 = appleSupplier.get();
+
+        Supplier<Apple> appleSupplier2 = () -> new Apple();
+        Apple a2 = appleSupplier2.get();
+
+        Function<Integer, Apple> funtion1 = Apple::new;
+        // == Function<Integer, Apple> function1 = (weight) -> new Apple(weight)
+        Apple a3 = funtion1.apply(100);
+
+        BiFunction<String, Integer, Apple> biFunction = Apple::new;
+        Apple a4 = biFunction.apply("green", 110);
     }
 
 

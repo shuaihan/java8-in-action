@@ -3,7 +3,7 @@ package com.exmpale.java8.model;
 /**
  * Created by shuaihan on 2017. 7. 17..
  */
-public class Apple {
+public class Apple implements Fruit{
 
     private String color;
     private Integer weight ;
@@ -12,6 +12,16 @@ public class Apple {
 
         this.color = color;
         this.weight = weight;
+    }
+
+    public Apple(Integer weight) {
+        this.weight = weight;
+
+    }
+
+
+    public Apple() {
+
     }
 
     public String getColor() {
