@@ -132,7 +132,8 @@ public class Main {
 
         // 3.7.3. Step 3: Use lambda expressions
         inventory.sort((Apple o1, Apple o2) -> o1.getWeight().compareTo(o2.getWeight()));
-        
+        inventory.sort((o1, o2) -> o1.getWeight().compareTo(o2.getWeight()));
+
     }
 
 
