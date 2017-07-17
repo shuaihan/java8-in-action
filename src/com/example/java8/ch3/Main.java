@@ -134,6 +134,9 @@ public class Main {
         inventory.sort((Apple o1, Apple o2) -> o1.getWeight().compareTo(o2.getWeight()));
         inventory.sort((o1, o2) -> o1.getWeight().compareTo(o2.getWeight()));
 
+        Comparator<Apple> comparator = Comparator.comparing((Apple a) -> a.getWeight()) ;
+        inventory.sort(Comparator.comparing((a) -> a.getWeight()));
+        inventory.sort(Comparator.comparing(Apple::getWeight));
     }
 
 
