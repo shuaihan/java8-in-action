@@ -63,6 +63,14 @@ public class Main {
         }) ;
 
         redApples = filter(inventory, (Apple apple) -> "red".equals(apple.getColor()));
+
+        // Real-world examples
+        // 2.4.1. Sorting with a Comparator
+        inventory.sort((a1, a2) -> {
+            return a1.getWeight() - a2.getWeight();
+        });
+        System.out.println("====================");
+        System.out.println(inventory);
     }
 
 
