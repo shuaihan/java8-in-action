@@ -16,4 +16,4 @@
    - ch14 : Functional programming techniques
    - ch15 : Blending OOP and FP: comparing Java 8 and Scala
    - ch16 : Conclusions and where next for Java
-   - Appendix : blabla  
+   - Appendix : This is a appendix 
