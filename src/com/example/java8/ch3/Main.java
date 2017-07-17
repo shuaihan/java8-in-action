@@ -10,7 +10,7 @@ import java.util.Comparator;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args)  throws IOException{
         // write your code here
         // Before
         Comparator<Apple> byWeight = new Comparator<Apple>() {
@@ -43,9 +43,16 @@ public class Main {
         try {
             String line = processFile();
             System.out.println(line);
+
+            // Step 4: Pass lambdas
+            // String oneline = processFile( (br) -> br.readLine());
+
+            // String twoLines = processFile( (br) -> br.readLine() + br.readLine());
         } catch(IOException ex) {
 
         }
+
+
 
     }
 
@@ -69,6 +76,7 @@ public class Main {
     public static String processFile(BufferedReaderProcessor p) throws IOException {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("README.md"))) {
             // this is the line that does usefull work.
+            // Step 3: Execute a behavior!
             return p.process(bufferedReader);
         }
     }
