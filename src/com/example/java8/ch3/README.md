@@ -20,3 +20,12 @@
 
 # @FunctionalInterface
 The compiler will return a meaningful error if you define an interface using the @FunctionalInterface annotation and it isn’t a functional interface. 
+
+# Method reference
+method reference 는 기존 메소드구현으로부터 람다 표현식을 생성해준다.
+
+|type | example | recipes for construction method references |
+|---|---|---|
+|static method reference |  Integer: : parseInt | (args) -> ClassName.statisMethod(args) => ClassName::staticMethod |
+|class method reference |String::length | (arg0, rest) -> arg0.instanceMethod(res) => ClassNAme::instanceMethod arg0 is of type Class Name |
+|instance method reference | instanceObject::getValue() | (args) -> expr.instanceMethod(args) => expr::instanceMethod |
