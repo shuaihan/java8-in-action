@@ -21,3 +21,20 @@
 - stateless operation vs stateful-bounded operation vs stateful-unbounded operation
 reduce(), sum, max are  stateful-bounded operations. sorted(), distinct()  are  stateful-unbounded operations
  
+
+# Summary
+1. The Streams API lets you express complex data processing queries. Common stream operations are summarized in table 5.1
+2. You can filter and slice a stream using the filter, distinct, skip, and limit methods.
+3. You can extract or transform elements of a stream using the map and flatMap methods.
+4. You can find elements in a stream using the findFirst and findAny methods. You can match a given
+   predicate in a stream using the allMatch, noneMatch, and anyMatch methods.
+5. These methods make use of short-circuiting: a computation stops as soon as a result is found; there’s
+   no need to process the whole stream.
+6. You can combine all elements of a stream iteratively to produce a result using the reduce method, for
+   example, to calculate the sum or find the maximum of a stream.
+7. Some operations such as filter and map are stateless; they don’t store any state. Some operations
+   such as reduce store state to calculate a value. Some operations such as sorted and distinct also store state because they need to buffer all the elements of a stream before returning a new stream. Such operations are called stateful operations.
+8. here are three primitive specializations of streams: IntStream, DoubleStream, and LongStream. Their operations are also specialized accordingly.
+9. Streams can be created not only from a collection but also from values, arrays, files, and specific methods such as iterate and generate.
+10. An infinite stream is a stream that has no fixed size.
+            
