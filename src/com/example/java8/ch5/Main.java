@@ -3,7 +3,12 @@ package com.example.java8.ch5;
 import com.exmpale.java8.model.Dish;
 import com.exmpale.java8.model.Trader;
 import com.exmpale.java8.model.Transaction;
+import javafx.scene.shape.Path;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -190,6 +195,24 @@ public class Main {
         IntStream evenNumber = IntStream.rangeClosed(1, 100).filter(n -> n%2 ==0);
         System.out.println(evenNumber.count());
 
+        Stream<String> stream1 = Stream.of("Java 8 ", "Lambdas ", "In ", "Action");
+        Stream<String> emptyStream = Stream.empty();
+
+        int[] numbersx = { 2,3,5,7,11,13} ;
+        sum = Arrays.stream(numbersx).sum();
+
+        // Streams from files
+
+        long uniqueWords = 0;
+        try(Stream<String> lines = Files.lines(Paths.get("README.md"), Charset.defaultCharset())) {
+              uniqueWords = lines.flatMap( line -> Arrays.stream(line.split(" ")))
+                      .distinct()
+                      .count();
+
+        }
+        catch(IOException e) {
+
+        }
     }
 
 
