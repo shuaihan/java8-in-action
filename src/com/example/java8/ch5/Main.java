@@ -156,6 +156,9 @@ public class Main {
         System.out.println(traderNames);
 
         // Are any traders based in Milan?
+        boolean milanBased = transactions.stream()
+                .anyMatch(transaction -> transaction.getTrader().getCity().equals("Milan"));
+
         
     }
 
