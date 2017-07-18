@@ -49,6 +49,7 @@ public class Main {
         // How would you use streams to filter the first two meat dishes?
         dishes = menu.stream().filter(dish -> dish.getCalories() > 300).limit(2).collect(Collectors.toList());
 
+        List<String> names = menu.stream().map(Dish::getName).collect(Collectors.toList());
     }
 
     
