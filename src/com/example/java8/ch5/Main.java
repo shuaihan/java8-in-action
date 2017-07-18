@@ -60,7 +60,13 @@ public class Main {
 
         // Incorrect use of map to find unique characters from a list of words
         words.stream().map( word -> word.split("")).distinct().collect(Collectors.toList());
-        
+
+        String[] arrayOfWords = {"Goodbye", "World"};
+        Stream<String> streamOfwords = Arrays.stream(arrayOfWords);
+
+        // The current solution still doesn’t work! This is because you now end up with a list of streams (more precisely, Stream<Stream<String>>)
+        words.stream().map(word -> word.split(""))
+                .map(Arrays::stream).distinct().collect(Collectors.toList())
     }
 
     
