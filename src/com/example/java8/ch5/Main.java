@@ -100,7 +100,7 @@ public class Main {
                         .findFirst().ifPresent(System.out::println);
 
         int sum = numbers.stream().reduce(0, (i, j) -> i + j);
-
+        sum = numbers.stream().reduce(0, Integer::sum) ;
 
         
     }
