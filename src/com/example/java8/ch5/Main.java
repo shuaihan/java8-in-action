@@ -149,7 +149,13 @@ public class Main {
 
         // method2
 
-        
+        traderNames = transactions.stream().map(c -> c.getTrader().getName())
+                .distinct()
+                .sorted()
+                .collect(Collectors.joining(","));
+        System.out.println(traderNames);
+
+        // Are any traders based in Milan?
         
     }
 
