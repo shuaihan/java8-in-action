@@ -44,6 +44,11 @@ public class Main {
         dishes = menu.stream().filter(dish -> dish.getCalories() > 300)
                 .skip(2).collect(Collectors.toList()) ;
         System.out.println(dishes);
+
+        //
+        // How would you use streams to filter the first two meat dishes?
+        dishes = menu.stream().filter(dish -> dish.getCalories() > 300).limit(2).collect(Collectors.toList());
+
     }
 
     
