@@ -81,6 +81,14 @@ public class Main {
                 .stream()
                 .flatMap(i -> numbers2.stream().map(j -> new int[]{i, j}))
                 .collect(Collectors.toList());
+
+        //  Checking to see if a predicate matches at least one element
+        if(menu.stream().anyMatch(Dish::isVegetarian)) {
+            System.out.println("The menu is (somewhat) vegetarian friendly!!");
+        }
+
+        // Checking to see if a predicate matches all elements
+        boolean isHealthy = menu.stream().allMatch(dish -> dish.getCalories() < 1000);
         
     }
 
