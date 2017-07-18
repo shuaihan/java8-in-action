@@ -40,5 +40,11 @@ public class Main {
         List<Dish> dishes = menu.stream().filter( dish -> dish.getCalories() > 300)
                 .limit(3).collect(Collectors.toList());
 
+        // Skipping elements in a stream
+        dishes = menu.stream().filter(dish -> dish.getCalories() > 300)
+                .skip(2).collect(Collectors.toList()) ;
+        System.out.println(dishes);
     }
+
+    
 }
