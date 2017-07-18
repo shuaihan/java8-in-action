@@ -66,7 +66,10 @@ public class Main {
 
         // The current solution still doesn’t work! This is because you now end up with a list of streams (more precisely, Stream<Stream<String>>)
         words.stream().map(word -> word.split(""))
-                .map(Arrays::stream).distinct().collect(Collectors.toList())
+                .map(Arrays::stream).distinct().collect(Collectors.toList())  ;
+
+        List<String> uniqueCharacters = words.stream().map(word -> word.split(""))
+                .flatMap(Arrays::stream).distinct().collect(Collectors.toList());
     }
 
     
