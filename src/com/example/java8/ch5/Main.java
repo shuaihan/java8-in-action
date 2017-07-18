@@ -4,6 +4,7 @@ import com.exmpale.java8.model.Dish;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -90,6 +91,10 @@ public class Main {
         // Checking to see if a predicate matches all elements
         boolean isHealthy = menu.stream().allMatch(dish -> dish.getCalories() < 1000);
         isHealthy = menu.stream().noneMatch(dish -> dish.getCalories() >= 1000)  ;
+
+        // Finding an element
+        Optional<Dish> dish = menu.stream().filter(Dish::isVegetarian).findAny();
+       
         
     }
 
