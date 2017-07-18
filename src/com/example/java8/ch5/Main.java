@@ -123,6 +123,11 @@ public class Main {
                 .filter( transaction -> transaction.getYear() == 2011)
                 .sorted(Comparator.comparing(Transaction::getValue))
                 .collect(Collectors.toList());
+
+        // 2. What are all the unique cities where the traders work?
+        transactions.stream().map(transaction -> transaction.getTrader().getCity())
+                .distinct() //
+                .collect(Collectors.toList());
         
     }
 
