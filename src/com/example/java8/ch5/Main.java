@@ -6,6 +6,7 @@ import com.exmpale.java8.model.Transaction;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Main {
@@ -180,6 +181,10 @@ public class Main {
 
         // mapping to a numeric stream
         int calories = menu.stream().mapToInt(Dish::getCalories).sum();
+
+        // Converting back to a stream of objects
+        IntStream intStream = menu.stream().mapToInt(Dish::getCalories);
+        Stream<Integer> stream = intStream.boxed();
     }
 
     
