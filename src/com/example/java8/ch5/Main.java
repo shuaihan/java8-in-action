@@ -5,6 +5,7 @@ import com.exmpale.java8.model.Trader;
 import com.exmpale.java8.model.Transaction;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -116,6 +117,12 @@ public class Main {
                 new Transaction(raoul, 2011, 400),
                 new Transaction(mario, 2012, 710), new Transaction(mario, 2012, 700), new Transaction(alan, 2012, 950)
         );
+
+        // 1. Find all transactions in the year 2011 and sort them by value (small to high).
+        List<Transaction> tr2011 = transactions.stream()
+                .filter( transaction -> transaction.getYear() == 2011)
+                .sorted(Comparator.comparing(Transaction::getValue))
+                .collect(Collectors.toList());
         
     }
 
