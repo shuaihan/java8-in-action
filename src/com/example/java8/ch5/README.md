@@ -1,4 +1,5 @@
-# Filtering unique elements
+# Stream methods
+- iterate, of, generate
 - filter(Predicate<? super T> predicate) 
 - limit()
 - skip()
@@ -13,6 +14,9 @@
 - findAny()
 - findFirst
 - reduce(T identity, BinaryOperator<T> accumulator);
+- count()
 
+# Stream operations: stateless vs. stateful
+- stateless operation vs stateful-bounded operation vs stateful-unbounded operation
 
-# 
+ 

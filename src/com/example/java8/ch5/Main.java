@@ -1,13 +1,14 @@
 package com.example.java8.ch5;
 
 import com.exmpale.java8.model.Dish;
+import com.exmpale.java8.model.Trader;
+import com.exmpale.java8.model.Transaction;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 public class Main {
 
@@ -103,6 +104,18 @@ public class Main {
         sum = numbers.stream().reduce(0, Integer::sum) ;
         Optional<Integer> max = numbers.stream().reduce(Integer::max);
         Optional<Integer> min = numbers.stream().reduce(Integer::min);
+
+        count = menu.stream().count();
+
+        Trader raoul = new Trader("Raoul", "Cambridge");
+        Trader mario = new Trader("Mario", "Milan");
+        Trader alan = new Trader("Alan", "Cambridge");
+        Trader brian = new Trader("Brian", "Cambridge");
+        List<Transaction> transactions = Arrays.asList(new Transaction(brian, 2011, 300),
+                new Transaction(raoul, 2012, 1000),
+                new Transaction(raoul, 2011, 400),
+                new Transaction(mario, 2012, 710), new Transaction(mario, 2012, 700), new Transaction(alan, 2012, 950)
+        );
         
     }
 
