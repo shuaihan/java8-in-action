@@ -217,6 +217,10 @@ public class Main {
         // Streams from functions: creating infinite streams!
 
         Stream.iterate(0, n -> n + 2).limit(10).forEach(System.out::println);
+
+        // Generate
+        Stream.generate(Math::random)
+                .limit(5) .forEach(System.out::println);
     }
 
 
