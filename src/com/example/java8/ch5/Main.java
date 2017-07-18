@@ -129,6 +129,15 @@ public class Main {
         // method2
         Set<String> cities = transactions.stream()
                 .map(transaction -> transaction.getTrader().getCity()) .collect(Collectors.toSet());
+
+        // 3. Find all traders from Cambridge and sort them by name
+        List<Trader> traders = transactions.stream()
+                .map(c -> c.getTrader())
+                .filter(trader -> "Cambrige".equals(trader.getName()))
+                .distinct()
+                .sorted(Comparator.comparing(Trader::getName))
+                .collect(Collectors.toList());
+        
         
     }
 
