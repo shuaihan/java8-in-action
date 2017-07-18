@@ -4,6 +4,7 @@ import com.exmpale.java8.model.Dish;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -24,5 +25,8 @@ public class Main {
                 .limit(3)
                 .count();
         System.out.println("count : " + count);
+
+        List<Dish> vegegtarianDishes = menu.stream().filter((Dish::isVegetarian()).collect(Collectors.toList());
+        
     }
 }
