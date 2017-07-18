@@ -185,7 +185,14 @@ public class Main {
         // Converting back to a stream of objects
         IntStream intStream = menu.stream().mapToInt(Dish::getCalories);
         Stream<Integer> stream = intStream.boxed();
+
+        //  Numeric ranges
+        IntStream evenNumber = IntStream.rangeClosed(1, 100).filter(n -> n%2 ==0);
+        System.out.println(evenNumber.count());
+
     }
+
+
 
     
 }
