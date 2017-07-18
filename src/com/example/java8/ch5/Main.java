@@ -155,11 +155,15 @@ public class Main {
                 .collect(Collectors.joining(","));
         System.out.println(traderNames);
 
-        // Are any traders based in Milan?
+        // 5. Are any traders based in Milan?
         boolean milanBased = transactions.stream()
                 .anyMatch(transaction -> transaction.getTrader().getCity().equals("Milan"));
 
-        
+       // 6. Print all transactions’ values from the traders living in Cambridge 
+        transactions.stream().filter(c -> c.getTrader().getCity().equals("Cambridge"))
+                .map(c -> c.getValue())
+                .forEach(System.out::println);
+
     }
 
     
