@@ -1,10 +1,12 @@
-package com.example.java8.ch4;
+package com.example.java8.ch5;
 
 import com.exmpale.java8.model.Dish;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 public class Main {
 
@@ -26,6 +28,11 @@ public class Main {
                 .count();
         System.out.println("count : " + count);
 
+        List<Dish> vegegtarianDishes = menu.stream().filter(Dish::isVegetarian).collect(Collectors.toList());
+
+        List<Integer> distinctList = Stream.of(1,2,1,3,3,2,4)
+                .filter( integer -> integer%2 == 0).distinct().collect(Collectors.toList());
+        System.out.println(distinctList);
 
     }
 }
