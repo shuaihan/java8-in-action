@@ -4,10 +4,7 @@ import com.exmpale.java8.model.Dish;
 import com.exmpale.java8.model.Trader;
 import com.exmpale.java8.model.Transaction;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -125,9 +122,13 @@ public class Main {
                 .collect(Collectors.toList());
 
         // 2. What are all the unique cities where the traders work?
+        // method1
         transactions.stream().map(transaction -> transaction.getTrader().getCity())
                 .distinct() //
                 .collect(Collectors.toList());
+        // method2
+        Set<String> cities = transactions.stream()
+                .map(transaction -> transaction.getTrader().getCity()) .collect(Collectors.toSet());
         
     }
 
