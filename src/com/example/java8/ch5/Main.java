@@ -50,6 +50,17 @@ public class Main {
         dishes = menu.stream().filter(dish -> dish.getCalories() > 300).limit(2).collect(Collectors.toList());
 
         List<String> names = menu.stream().map(Dish::getName).collect(Collectors.toList());
+
+        List<String> words = Arrays.asList("Java8", "Lambdas", "In", "Action") ;
+        words.stream().map(String::length).forEach(System.out::println);
+
+        // Flattening streams
+        // ["Hello", "World"] you’d like to return the list ["H", "e", "l", "o", "W", "r", "d"].
+        words = Arrays.asList("Hello", "World") ;
+
+        // Incorrect use of map to find unique characters from a list of words
+        words.stream().map( word -> word.split("")).distinct().collect(Collectors.toList());
+        
     }
 
     
