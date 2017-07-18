@@ -101,7 +101,8 @@ public class Main {
 
         int sum = numbers.stream().reduce(0, (i, j) -> i + j);
         sum = numbers.stream().reduce(0, Integer::sum) ;
-
+        Optional<Integer> max = numbers.stream().reduce(Integer::max);
+        Optional<Integer> min = numbers.stream().reduce(Integer::min);
         
     }
 

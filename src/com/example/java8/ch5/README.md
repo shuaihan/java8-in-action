@@ -13,3 +13,6 @@
 - findAny()
 - findFirst
 - reduce(T identity, BinaryOperator<T> accumulator);
+
+
+# 
