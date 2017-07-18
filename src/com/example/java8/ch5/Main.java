@@ -137,6 +137,18 @@ public class Main {
                 .distinct()
                 .sorted(Comparator.comparing(Trader::getName))
                 .collect(Collectors.toList());
+
+        // 4.Return a string of all traders’ names sorted alphabetically
+        // method1
+        String traderNames =  transactions.stream()
+                .map(c -> c.getTrader().getName())
+                .distinct()
+                .sorted()
+                .reduce("", (a, b) -> a + ", " + b);
+        System.out.println(traderNames);
+
+        // method2
+
         
         
     }
