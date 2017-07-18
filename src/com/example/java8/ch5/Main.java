@@ -89,6 +89,7 @@ public class Main {
 
         // Checking to see if a predicate matches all elements
         boolean isHealthy = menu.stream().allMatch(dish -> dish.getCalories() < 1000);
+        isHealthy = menu.stream().noneMatch(dish -> dish.getCalories() >= 1000)  ;
         
     }
 
