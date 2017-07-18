@@ -178,6 +178,8 @@ public class Main {
                 = transactions.stream().min(Comparator.comparing(Transaction::getValue));
 
 
+        // mapping to a numeric stream
+        int calories = menu.stream().mapToInt(Dish::getCalories).sum();
     }
 
     
