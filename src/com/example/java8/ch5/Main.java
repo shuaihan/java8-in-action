@@ -164,6 +164,12 @@ public class Main {
                 .map(c -> c.getValue())
                 .forEach(System.out::println);
 
+        // 7. What’s the highest value of all the transactions?
+        Optional<Integer> highestValue = transactions.stream().map(c -> c.getValue())
+                .reduce(Integer::max);
+
+
+
     }
 
     
