@@ -168,6 +168,10 @@ public class Main {
         Optional<Integer> highestValue = transactions.stream().map(c -> c.getValue())
                 .reduce(Integer::max);
 
+        // Find the transaction with the smallest value
+        Optional<Transaction> smallestTransaction =
+                transactions.stream().reduce((a, b) -> a.getValue() < b.getValue() ? a : b);
+
 
 
     }
