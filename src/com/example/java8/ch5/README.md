@@ -10,3 +10,4 @@
 - anyMatch(Predicate<? super T> predicate)
 - allMatch(Predicate<? super T> predicate)
 - noneMatch(Predicate<? super T> predicate) : The opposite of allMatch is noneMatch
+- findAny()

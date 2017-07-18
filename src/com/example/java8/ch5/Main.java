@@ -94,7 +94,11 @@ public class Main {
 
         // Finding an element
         Optional<Dish> dish = menu.stream().filter(Dish::isVegetarian).findAny();
-       
+        dish.ifPresent( dish1 -> System.out.println(dish1.getName()));
+ 
+                numbers1.stream().map(x -> x*x).filter( x -> x%3 ==0)
+                        .findFirst().ifPresent(System.out::println);
+
         
     }
 
