@@ -99,6 +99,9 @@ public class Main {
                 numbers1.stream().map(x -> x*x).filter( x -> x%3 ==0)
                         .findFirst().ifPresent(System.out::println);
 
+        int sum = numbers.stream().reduce(0, (i, j) -> i + j);
+
+
         
     }
 

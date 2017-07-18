@@ -11,3 +11,5 @@
 - allMatch(Predicate<? super T> predicate)
 - noneMatch(Predicate<? super T> predicate) : The opposite of allMatch is noneMatch
 - findAny()
+- findFirst
+- reduce(T identity, BinaryOperator<T> accumulator);
