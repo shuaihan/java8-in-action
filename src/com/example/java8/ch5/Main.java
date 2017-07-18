@@ -169,9 +169,13 @@ public class Main {
                 .reduce(Integer::max);
 
         // Find the transaction with the smallest value
+        // method1
         Optional<Transaction> smallestTransaction =
                 transactions.stream().reduce((a, b) -> a.getValue() < b.getValue() ? a : b);
 
+        // method2
+        Optional<Transaction> smallestTransaction2
+                = transactions.stream().min(Comparator.comparing(Transaction::getValue));
 
 
     }
