@@ -38,3 +38,6 @@ reduce(), sum, max are  stateful-bounded operations. sorted(), distinct()  are  
 9. Streams can be created not only from a collection but also from values, arrays, files, and specific methods such as iterate and generate.
 10. An infinite stream is a stream that has no fixed size.
             
+
+# Reference
+- [Stream API Document](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#method.summary)
