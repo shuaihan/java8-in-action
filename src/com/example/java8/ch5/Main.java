@@ -221,9 +221,33 @@ public class Main {
         // Generate
         Stream.generate(Math::random)
                 .limit(5) .forEach(System.out::println);
+
+
+
+        fibonacciTuplesSeriesByIterate();
+        fibonacciTuplesSeriesByGenerate();
     }
 
 
+    /*
+    * input 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+    * output  (0, 1), (1, 1), (1, 2), (2, 3), (3, 5), (5, 8), (8, 13), (13, 21).
+    * */
+    public static void fibonacciTuplesSeriesByIterate() {
+        Stream.iterate(new int[] {0, 1},
+                t -> new int[]{t[1], t[0] + t[1]}
+                ).limit(20)
+                .forEach(t -> System.out.println("(" + t[0] + "," + t[1] +")"));
+
+        Stream.iterate(new int[] {0, 1}, t -> new int[]{t[1], t[0] + t[1]})
+                .limit(10)
+                .mapToInt(c -> c[0])
+                .forEach(System.out::println);
+    }
+
+    public static void fibonacciTuplesSeriesByGenerate() {
+
+    }
 
     
 }
