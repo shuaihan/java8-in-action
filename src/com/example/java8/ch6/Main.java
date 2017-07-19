@@ -3,9 +3,7 @@ package com.example.java8.ch6;
 import com.exmpale.java8.model.CaloricLevel;
 import com.exmpale.java8.model.Dish;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -47,6 +45,15 @@ public class Main {
                 );
         System.out.println(dishesByTypeCaloricLevel);
 
+        Map<Dish.Type, Long> typesCount = menu
+                .stream()
+                .collect(Collectors.groupingBy(Dish::getType, Collectors.counting())) ;
+
+
+        System.out.println(typesCount);
         
+        Map<Dish.Type, Optional<Dish>> mostCaloricByType = menu.stream()
+                .collect(Collectors.groupingBy(Dish::getType, Collectors.maxBy(Comparator.comparingInt(Dish::getCalories))));
+
     }
 }
