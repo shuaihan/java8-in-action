@@ -1,5 +1,6 @@
 package com.example.java8.ch6;
 
+import com.exmpale.java8.model.CaloricLevel;
 import com.exmpale.java8.model.Dish;
 
 import java.util.Arrays;
@@ -21,7 +22,16 @@ public class Main {
                 new Dish("prawns", false, 300, Dish.Type.FISH),
                 new Dish("salmon", false, 450, Dish.Type.FISH) );
 
+        // Function<? super T, ? extends K> classifier
         Map<Dish.Type, List<Dish>> dishesByType = menu.stream().collect(Collectors.groupingBy(Dish::getType));
         System.out.println(dishesByType);
+
+        Map<CaloricLevel, List<Dish>> dishesByCaloricLevel = menu.stream()
+                .collect(Collectors.groupingBy( dish -> {
+                    if (dish.getCalories() <= 400) return CaloricLevel.DIET;
+                    else if (dish.getCalories() <= 700) return  CaloricLevel.NORMAL;
+                    else return CaloricLevel.FAT;
+                })) ;
+        System.out.println(dishesByCaloricLevel);
     }
 }
