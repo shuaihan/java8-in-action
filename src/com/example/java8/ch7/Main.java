@@ -1,11 +1,12 @@
 package com.example.java8.ch7;
 
+import java.util.Spliterator;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
-import java.util.function.Consumer;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 public class Main {
 
@@ -25,6 +26,7 @@ public class Main {
 
         System.out.println(countWordsIteratively(SENTENCE));
         System.out.println(countWordsIterativelyByFunctional(SENTENCE));
+        System.out.println(countWordsParallel(SENTENCE));
 
 
     }
@@ -83,6 +85,16 @@ public class Main {
         Stream<Character> stream = IntStream.range(0, s.length())
                 .mapToObj(i -> s.charAt(i));
 
+        WordCounter wordCounter = stream.parallel().reduce(new WordCounter(0, true),
+                WordCounter::accumulate, WordCounter::combine);
+        return wordCounter.getCounter();
+
+    }
+
+    public static int countWordsParallel(String s) {
+
+        Spliterator<Character> spliterator = new WordCounterSpliterator(s);
+        Stream<Character> stream = StreamSupport.stream(spliterator, true);
         WordCounter wordCounter = stream.parallel().reduce(new WordCounter(0, true),
                 WordCounter::accumulate, WordCounter::combine);
         return wordCounter.getCounter();
