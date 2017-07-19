@@ -95,5 +95,10 @@ public class Main {
             Dish::isVegetarian
         )) ;
 
+        Map<Boolean, Map<Dish.Type, List<Dish>>> vegetarianDishedByType =
+                menu.stream().collect(Collectors.partitioningBy(Dish::isVegetarian,
+                           Collectors.groupingBy(Dish::getType)
+                        ));
+
     }
 }
