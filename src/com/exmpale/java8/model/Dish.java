@@ -4,6 +4,9 @@ package com.exmpale.java8.model;
  * Created by shuaihan on 2017. 7. 17..
  */
 public class Dish {
+
+
+
     private final String name;
     private final boolean vegetarian;
     private final int calories;
