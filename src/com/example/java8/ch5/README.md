@@ -1,5 +1,7 @@
 # Stream methods
+## constructor methods
 - iterate, of, generate
+## intermediate methods
 - filter(Predicate<? super T> predicate) 
 - limit()
 - skip()
@@ -9,13 +11,19 @@
 - map(Function<? super T, ? extends R> mapper)
 - flatMap(Function<? super T, ? extends Stream<? extends R>> mapper)
 ![fiture](https://1.bp.blogspot.com/-RJseuNzmm7I/Vtb3pH7iPkI/AAAAAAAAE-s/ZJSxR4EnlSI/s640/Java%2B8%2BflatMap%2Bexample%2B.jpg)
+## terminal methods
 - anyMatch(Predicate<? super T> predicate)
 - allMatch(Predicate<? super T> predicate)
 - noneMatch(Predicate<? super T> predicate) : The opposite of allMatch is noneMatch
 - findAny()
 - findFirst
-- reduce(T identity, BinaryOperator<T> accumulator);
 - count()
+- reduce(T identity, BinaryOperator<T> accumulator);
+- Optional<T> reduce(BinaryOperator<T> accumulator);
+- <U> U reduce(U identity, BiFunction<U, ? super T, U> accumulator,BinaryOperator<U> combiner)
+
+
+
 
 # Stream operations: stateless vs. stateful
 - stateless operation vs stateful-bounded operation vs stateful-unbounded operation

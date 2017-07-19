@@ -3,10 +3,16 @@ package com.example.java8.ch7;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 import java.util.function.Consumer;
+import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 public class Main {
+
+    final static String SENTENCE =
+            " Nel mezzo del cammin di nostra vita " +
+                    "mi ritrovai in una selva oscura" + " ché la dritta via era smarrita ";
+
 
     public static void main(String[] args) {
         System.out.println(sequentialSum(3));
@@ -16,6 +22,10 @@ public class Main {
         System.out.println(sideEffectParallelSum(100));
 
         System.out.println(forkJoinSum(100000));
+
+        System.out.println(countWordsIteratively(SENTENCE));
+        System.out.println(countWordsIterativelyByFunctional(SENTENCE));
+
 
     }
 
@@ -52,6 +62,31 @@ public class Main {
 
         ForkJoinTask<Long> task = new ForkJoinSumCalculaor(numbers);
         return new ForkJoinPool().invoke(task);
+    }
+
+    public static int countWordsIteratively(String s) {
+        int counter = 0;
+        boolean lastSpace = true;
+        for(char c : s.toCharArray()) {
+            if(Character.isWhitespace(c)) {
+                lastSpace = true;
+            }
+            else {
+                if(lastSpace) counter++;
+                lastSpace = false;
+            }
+        }
+        return counter;
+    }
+
+    public static int countWordsIterativelyByFunctional(String s) {
+        Stream<Character> stream = IntStream.range(0, s.length())
+                .mapToObj(i -> s.charAt(i));
+
+        WordCounter wordCounter = stream.parallel().reduce(new WordCounter(0, true),
+                WordCounter::accumulate, WordCounter::combine);
+        return wordCounter.getCounter();
+
     }
 
 }
