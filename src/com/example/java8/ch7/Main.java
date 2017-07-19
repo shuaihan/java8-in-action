@@ -1,5 +1,7 @@
 package com.example.java8.ch7;
 
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.ForkJoinTask;
 import java.util.function.UnaryOperator;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
@@ -12,6 +14,8 @@ public class Main {
 
         System.out.println(sideEffectSum(100));
         System.out.println(sideEffectParallelSum(100));
+
+        System.out.println(forkJoinSum(100000000));
 
     }
 
@@ -40,6 +44,14 @@ public class Main {
         Accumulator accumulator = new Accumulator();
         LongStream.rangeClosed(1, n).parallel().forEach(accumulator::add);
         return accumulator.total;
+    }
+
+
+    public static long forkJoinSum(long n) {
+        long[] numbers = LongStream.rangeClosed(1, n).toArray();
+
+        ForkJoinTask<Long> task = new ForkJoinSumCalculaor(numbers);
+        return new ForkJoinPool().invoke(task);
     }
 
 }
