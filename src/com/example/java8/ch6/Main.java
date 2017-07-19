@@ -55,5 +55,12 @@ public class Main {
         Map<Dish.Type, Optional<Dish>> mostCaloricByType = menu.stream()
                 .collect(Collectors.groupingBy(Dish::getType, Collectors.maxBy(Comparator.comparingInt(Dish::getCalories))));
 
+        //  to adapt the result returned by a collector to a different type, you could use the collector returned by the Collectors.collectingAndThen factory method,
+        Map<Dish.Type, Dish> mostCaloricByType2 =
+                menu.stream()
+                .collect(Collectors.groupingBy(Dish::getType, Collectors.collectingAndThen(
+                        Collectors.maxBy(Comparator.comparingInt(Dish::getCalories)),
+                        Optional::get
+                ) ));
     }
 }
