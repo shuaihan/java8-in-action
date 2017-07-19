@@ -90,5 +90,10 @@ public class Main {
                         else return CaloricLevel.FAT; },
                         Collectors.toCollection(HashSet::new) )));
 
+        Map<Boolean, List<Dish>> partitionedMenu = menu.stream().collect(Collectors.partitioningBy(
+
+            Dish::isVegetarian
+        )) ;
+
     }
 }
