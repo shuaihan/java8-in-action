@@ -49,5 +49,17 @@ public interface Collector<T, A, R> {
 |public static <T, K> Collector<T, ?, Map<K, List<T>>> groupingBy(Function<? super T, ? extends K> classifier)                                       |
 |public static <T, K, A, D> Collector<T, ?, Map<K, D>> groupingBy(Function<? super T, ? extends K> classifier, Collector<? super T, A, D>downstream)|
 |public static <T, U, A, R>Collector<T, ?, R> mapping(Function<? super T, ? extends U> mapper, Collector<? super U, A, R> downstream) |
+
+# Summary
+- collect is a terminal operation that takes as argument various recipes (called collectors) for accumulating the elements of a stream into a summary result.
+- Predefined collectors include reducing and summarizing stream elements into a single value, such as calculating the minimum, maximum, or average. 
+- Predefined collectors let you group elements of a stream with groupingBy and partition elements of a stream with partitioningBy.
+- Collectors compose effectively to create multilevel groupings, partitions, and reductions.
+- You can develop your own collectors by implementing the methods defined in the Collector interface.
+
+
 # Reference
 - [yangbongsoo java8 gitbooks](https://yangbongsoo.gitbooks.io/study/content/part2-2_d568_c218_d615_b370_c774_d130_cc98_b9ac.html)
+
+
+
