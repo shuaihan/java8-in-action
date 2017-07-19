@@ -2,7 +2,7 @@ package com.example.java8.ch7;
 
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
-import java.util.function.UnaryOperator;
+import java.util.function.Consumer;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
@@ -15,7 +15,7 @@ public class Main {
         System.out.println(sideEffectSum(100));
         System.out.println(sideEffectParallelSum(100));
 
-        System.out.println(forkJoinSum(100000000));
+        System.out.println(forkJoinSum(100000));
 
     }
 

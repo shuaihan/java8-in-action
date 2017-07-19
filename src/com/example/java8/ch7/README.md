@@ -46,6 +46,38 @@ For instance, an ArrayList can be split much more efficiently than a LinkedList,
 # Fork Join Framework 
 well-known divide-and-conquer algorithm
 
+
+# Spliterator
+
+```
+// T is the type of the elements traversed by the Spliterator.
+public interface Spliterator<T> {
+    
+    /**
+    * The tryAdvance method behaves in a way similar to a normal Iterator in the sense 
+    * that it’s used to sequentially consume the elements of the Spliterator one by one, 
+    * returning true if there are still other elements to be traversed.
+    */
+    boolean tryAdvance(Consumer<? super T> action); 
+    
+    /**
+    * the trySplit method is more specific to the Spliterator interface because it’s used to partition off some of 
+    * its elements to a second Spliterator (the one returned by the method),
+    * allowing the two to be processed in parallel.
+    */
+    Spliterator<T> trySplit();
+    
+    /**
+    * A Spliterator may also provide an estimation of the number of the elements
+    * remaining to be traversed via its estimateSize method,
+    */
+    long estimateSize();
+    
+    // 
+    int characteristics();
+}
+
+```
  
 # Reference
 - [Fork Join Framework - ForkJoinPool](http://blog.naver.com/PostView.nhn?blogId=2feelus&logNo=220732310413)

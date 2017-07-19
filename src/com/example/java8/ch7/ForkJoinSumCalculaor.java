@@ -28,6 +28,8 @@ public class ForkJoinSumCalculaor extends RecursiveTask<Long> {
     // Override the abstract method of RecursiveTask
     @Override
     protected Long compute() {
+
+        System.out.println("Thread name =" + Thread.currentThread().getName());
         // The size of the portion of the array summed by this task
         int length = end - start;
         if(length <= THRESHOLD) {
