@@ -62,5 +62,33 @@ public class Main {
                         Collectors.maxBy(Comparator.comparingInt(Dish::getCalories)),
                         Optional::get
                 ) ));
+        System.out.println(mostCaloricByType2);
+
+        Map<Dish.Type, Integer> totalCaloriesByType =
+                menu.stream()
+                        .collect(
+                                Collectors.groupingBy(Dish::getType, Collectors.summingInt(Dish::getCalories)));
+        System.out.println(totalCaloriesByType);
+
+        Map<Dish.Type, Set<CaloricLevel>> calroricLevelByType =
+                menu.stream().collect(
+                  Collectors.groupingBy(Dish::getType,
+                  Collectors.mapping( (dish) -> {
+                      if (dish.getCalories() <= 400) return CaloricLevel.DIET;
+                      else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
+                      else return CaloricLevel.FAT;
+                      }
+        , Collectors.toSet()
+                  )
+                ));
+        System.out.println(calroricLevelByType);
+
+        Map<Dish.Type, Set<CaloricLevel>> caloricLevelsByType = menu.stream().collect(
+                Collectors.groupingBy(Dish::getType, Collectors.mapping(
+                        dish -> { if (dish.getCalories() <= 400) return CaloricLevel.DIET;
+                        else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
+                        else return CaloricLevel.FAT; },
+                        Collectors.toCollection(HashSet::new) )));
+
     }
 }
