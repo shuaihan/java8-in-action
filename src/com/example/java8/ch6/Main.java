@@ -106,6 +106,11 @@ public class Main {
                         Collectors.maxBy(Comparator.comparingInt(Dish::getCalories)), Optional::get)));
 
         List<Dish> dishes = menu.stream().collect(new ToListCollector<Dish>());
+        dishes = menu.stream().collect(
+                ArrayList::new,   // supplier
+                List::add, // accumulator
+                List::addAll  // combiner
+        );
     }
 
   
