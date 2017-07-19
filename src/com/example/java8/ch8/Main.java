@@ -53,6 +53,9 @@ public class Main {
 
         Map<CaloricLevel, List<Dish>> dishesByCaloricLevel =
                 menu.stream().collect(Collectors.groupingBy(Dish::getCaloricLevel));
+        int totalCalories = menu.stream().map(Dish::getCalories)
+                .reduce(0, (c1, c2) -> c1 + c2);
+        totalCalories = menu.stream().collect(Collectors.summingInt(Dish::getCalories));
         
     }
 
