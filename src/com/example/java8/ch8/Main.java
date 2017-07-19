@@ -56,7 +56,24 @@ public class Main {
         int totalCalories = menu.stream().map(Dish::getCalories)
                 .reduce(0, (c1, c2) -> c1 + c2);
         totalCalories = menu.stream().collect(Collectors.summingInt(Dish::getCalories));
+
+        // Strategy Pattern
+        Validator numericValidator = new Validator(new IsNumeric());
+        boolean b1 = numericValidator.validate("aaaa");
+
+        Validator lowerCaseValidator = new Validator(new IsAllLowerCase());
+        boolean b2 = lowerCaseValidator.validate("bbbb");
+
+        // Using lambda expressions
+
+        Validator numericValidator2 = new Validator(s -> s.matches("\\d+"));
+        boolean b3 = numericValidator2.validate("aaaa");
+
+        Validator lowerCaseValidator2 = new Validator(s -> s.matches("[a-z]+"));
+        boolean b4 = lowerCaseValidator2.validate("bbbb");
+
         
+
     }
 
     public static void doSomething(Runnable r) {
