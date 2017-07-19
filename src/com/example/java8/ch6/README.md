@@ -1,10 +1,34 @@
 # Collection, Collector, and collect!
 
 ## collect
+
+
 - <R> R collect(Supplier<R> supplier, BiConsumer<R, ? super T> accumulator, BiConsumer<R, R> combiner);
 - <R, A> R collect(Collector<? super T, A, R> collector);
 
 ## Collectors
+
+```
+/**
+    T is the generic type of the items in the stream to be collected.
+    A is the type of the accumulator, 
+    the object on which the partial  result will be accumulated 
+    during the collection process.
+    R is the type of the object (typically, but not always, the collection) 
+    resulting from the collect operation.
+        
+*/
+public interface Collector<T, A, R> { 
+    
+    Supplier<A> supplier(); 
+    BiConsumer<A, T> accumulator(); 
+    Function<A, R> finisher(); 
+    BinaryOperator<A> combiner(); 
+    Set<Characteristics> characteristics();
+}
+```
+![Logical steps of the sequential reduction process](http://apprize.info/javascript/action/action.files/image129.jpg)
+
 |method signature|
 |---|
 |public static <T> Collector<T, ?, Long> counting()     |                                                                       

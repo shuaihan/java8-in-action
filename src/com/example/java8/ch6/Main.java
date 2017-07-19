@@ -5,6 +5,7 @@ import com.exmpale.java8.model.Dish;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Main {
 
@@ -100,5 +101,12 @@ public class Main {
                            Collectors.groupingBy(Dish::getType)
                         ));
 
+        Map<Boolean, Dish> mostCaloricPartitionedByVegetarian = menu.stream().collect(
+                Collectors.partitioningBy(Dish::isVegetarian,  Collectors.collectingAndThen(
+                        Collectors.maxBy(Comparator.comparingInt(Dish::getCalories)), Optional::get)));
+
+        List<Dish> dishes = menu.stream().collect(new ToListCollector<Dish>());
     }
+
+  
 }
