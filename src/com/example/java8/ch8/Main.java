@@ -4,13 +4,20 @@ import com.exmpale.java8.model.CaloricLevel;
 import com.exmpale.java8.model.Dish;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
 public class Main {
+
+    final static Map<String, Supplier<Product>> map = new HashMap<>(); static {
+        map.put("loan", Loan::new); map.put("stock", Stock::new); map.put("bond", Bond::new);
+    }
+
 
     interface Task{
         public void execute();
@@ -101,6 +108,8 @@ public class Main {
 
         Function<String, String> pipeline = headerProcess.andThen(spellChckerProcessing);
         pipeline.apply("Aren`t labdas really sexy?!!");
+
+        Product p = ProductFactory.createProduct("loan");
         
     }
 
@@ -110,5 +119,11 @@ public class Main {
 
     public static void doSomething(Task a) {
         a.execute();
+    }
+
+    public static Product createProduct(String name){
+        Supplier<Product> p = map.get(name);
+        if(p != null) return p.get();
+        throw new IllegalArgumentException("No such product " + name);
     }
 }
