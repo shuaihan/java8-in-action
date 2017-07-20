@@ -25,4 +25,23 @@ public class Main {
         }
         return "Unknown";
     }
+
+    // Null-safe attempt 2: too many exits
+    public String getCarInsuranceNameNullSafe2(Person person) {
+        if(person == null) {
+            return "Unknown";
+        }
+
+        Car car = person.getCar();
+        if( car == null) {
+            return "Unknown";
+        }
+
+        Insurance insurance = car.getInsurance();
+        if(insurance == null) {
+            return "Unknown";
+        }
+
+        return insurance.getName();
+    }
 }
