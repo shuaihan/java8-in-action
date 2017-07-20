@@ -6,6 +6,8 @@ import com.exmpale.java8.model.Dish;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -78,6 +80,28 @@ public class Main {
         f.registerObserver(new LeMonde());
         f.notifyObservers("The queen said her favourite book is Java 8 in Action!");
 
+        f.registerObserver((String tweet) -> {
+            if(tweet != null && tweet.contains("money")){
+                System.out.println("Breaking news in NY! " + tweet); }
+        });
+        f.registerObserver((String tweet) -> {
+            if(tweet != null && tweet.contains("queen")){
+                System.out.println("Yet another news in London... " + tweet); }
+        });
+
+        ProcessingObject<String> p1 = new HeaderTextProcessing();
+        ProcessingObject<String> p2 = new SpellcheckerProcessing();
+
+        p1.setSuccessor(p2);
+        String result = p1.handle("Aren`t labdas really sexy?!!" );
+        System.out.println(result);
+
+        UnaryOperator<String> headerProcess = (String text) -> "From Raoul, Mario and Alan: " + text;
+        UnaryOperator<String> spellChckerProcessing = (String text) -> text.replaceAll("labda", "lambda");
+
+        Function<String, String> pipeline = headerProcess.andThen(spellChckerProcessing);
+        pipeline.apply("Aren`t labdas really sexy?!!");
+        
     }
 
     public static void doSomething(Runnable r) {
