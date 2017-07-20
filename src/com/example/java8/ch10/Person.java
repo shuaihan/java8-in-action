@@ -1,16 +1,16 @@
 package com.example.java8.ch10;
 
+import java.util.Optional;
+
 /**
  * Created by shuaihan on 2017. 7. 20..
  */
 public class Person {
-    private Car car;
+    private Optional<Car> car;
 
-    public Car getCar() {
+    public Optional<Car> getCar() {
         return car;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
-    }
+
 }

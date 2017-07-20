@@ -1,16 +1,16 @@
 package com.example.java8.ch10;
 
+import java.util.Optional;
+
 /**
  * Created by shuaihan on 2017. 7. 20..
  */
 public class Car {
-    private Insurance insurance;
+    private Optional<Insurance> insurance;
 
-    public Insurance getInsurance() {
+    public Optional<Insurance> getInsurance() {
         return insurance;
     }
 
-    public void setInsurance(Insurance insurance) {
-        this.insurance = insurance;
-    }
+
 }
