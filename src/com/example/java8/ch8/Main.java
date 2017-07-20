@@ -72,7 +72,11 @@ public class Main {
         Validator lowerCaseValidator2 = new Validator(s -> s.matches("[a-z]+"));
         boolean b4 = lowerCaseValidator2.validate("bbbb");
 
-        
+        Feed f = new Feed();
+        f.registerObserver(new NYTimes());
+        f.registerObserver(new Guardian());
+        f.registerObserver(new LeMonde());
+        f.notifyObservers("The queen said her favourite book is Java 8 in Action!");
 
     }
 
